@@ -37,14 +37,15 @@ class GenericSockets:
         else:
             return None
 
-    def parse_host(hostname):
+    def parse_host(self,hostname):
         host = hostname.replace('tcp://', '').split(':')
-        host[1] = int(hostname[1])
-        return host
+        port = int(host[1])
+        host = host[0]
+        return host,port
 
 class Server(ProtoSockets, GenericSockets):
 
-    def __init__(self, host, port, connections, name):
+    def __init__(self, hostname, connections, name):
 
         self.type = "server"
         self.Socket = socket.socket()
@@ -52,7 +53,7 @@ class Server(ProtoSockets, GenericSockets):
         self.collector_threads = []
         self.recieved = queue.Queue()
         
-        host = self.parse_host(host)
+        host,port = self.parse_host(hostname)
         
         self.Socket.bind((host,port))
         self.Socket.listen(connections)
@@ -111,14 +112,14 @@ class Server(ProtoSockets, GenericSockets):
         self.users[name][0].send(message)
 
 class Client(ProtoSockets, GenericSockets):
-    def __init__(self, host, port, name):
+    def __init__(self, hostname, name):
 
         self.type = "client"
         self.conn = socket.socket()
         self.name = name
         self.recieved = queue.Queue()
         
-        host = self.parse_host(host)
+        host,port = self.parse_host(hostname)
         
         self.handshake_accept(host,port)
 
