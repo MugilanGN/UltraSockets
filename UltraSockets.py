@@ -3,11 +3,6 @@ import queue
 import threading
 import struct
 
-def parse_host(hostname):
-    host = hostname.replace('tcp://', '').split(':')
-    host[1] = int(hostname[1])
-    return host
-
 class ProtoSockets:
     def __init__(self,host,port):
         pass
@@ -42,6 +37,12 @@ class GenericSockets:
         else:
             return None
 
+    def parse_host(hostname):
+        host = hostname.replace('tcp://', '').split(':')
+        host[1] = int(hostname[1])
+        return host
+
+
 class Server(ProtoSockets, GenericSockets):
 
     def __init__(self, host, port, connections, name):
@@ -51,15 +52,13 @@ class Server(ProtoSockets, GenericSockets):
         self.name = name
         self.collector_threads = []
         self.recieved = queue.Queue()
-
+        
+        host = self.parse_host(host)
+        
         self.Socket.bind((host,port))
         self.Socket.listen(connections)
 
         self.handshake_initiate(connections)
-
-    def __init__(self, host, connections, name):
-        host = parse_host(host)
-        self.__init__(host[0], host[1], connections, name)
 
     def handshake_initiate(self,connections):
         self.users = {}
@@ -119,12 +118,10 @@ class Client(ProtoSockets, GenericSockets):
         self.conn = socket.socket()
         self.name = name
         self.recieved = queue.Queue()
-
+        
+        host = self.parse_host(host)
+        
         self.handshake_accept(host,port)
-
-    def __init__(self, host, name):
-        host = parse_host(host)
-        self.__init__(host[0], host[1], name)
 
     def handshake_accept(self,host,port):
         self.conn.connect((host,port))
