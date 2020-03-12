@@ -88,7 +88,7 @@ class Server(ProtoSockets, GenericSockets):
                     else:
                         self.recieved.put([name,recipient[2],self.recieved.qsize()])
                 else:
-                    self.send(recipient[0],recipient[2])
+                    self.send(name,recipient[2])
                     
             restart = self.protorecieve(conn)  
 
