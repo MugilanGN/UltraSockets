@@ -11,7 +11,7 @@ def parse_host(hostname):
 class ProtoSockets:
     def __init__(self,host,port):
         pass
-
+    
     def protosend(self,message,conn):
         message = str(message).encode()
         conn.send(message)
@@ -98,7 +98,7 @@ class Server(ProtoSockets, GenericSockets):
                     else:
                         self.recieved.put([name,recipient[2],self.recieved.qsize()])
                 else:
-                    self.send(recipient[0],recipient[2])
+                    self.send(name,recipient[2])
 
             restart = self.protorecieve(conn)
 
