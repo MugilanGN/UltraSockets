@@ -28,7 +28,7 @@ Name is the name given to the client. This is just a string like "PC2" which is 
 ### client.get(num)
 Num can be the number of messages that you want to retrieve from the Queue which contains all the messages recieved so far. If no messages are present, it returns None. It operates as First In, Last Out. It will return a list like so:
 
-[ [ name_of_recipient , message , message_serial_number ] , [...] , ... ]
+[ [ name_of_sender , message , message_serial_number ] , [...] , ... ]
 
 Num can also be "all" which will return a list of all the messages that have been recieved
 
@@ -68,6 +68,6 @@ Message is the message itself which is going to be transmitted. It can be any da
 ### server.get(num)
 Num can be the number of messages that you want to retrieve from the Queue which contains all the messages recieved so far. If no messages are present, it returns None. It operates as First In, Last Out. It will return a list like so:
 
-[ [ name_of_recipient , message , message_serial_number ] , [...] , ... ]
+[ [ name_of_sender , message , message_serial_number ] , [...] , ... ]
 
 Num can also be "all" which will return a list of all the messages that have been recieved
