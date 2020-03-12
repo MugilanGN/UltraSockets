@@ -42,7 +42,6 @@ class GenericSockets:
         host[1] = int(hostname[1])
         return host
 
-
 class Server(ProtoSockets, GenericSockets):
 
     def __init__(self, host, port, connections, name):
