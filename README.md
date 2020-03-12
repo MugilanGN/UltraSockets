@@ -18,10 +18,8 @@ This is a very brief documentation of UltraSockets. The package was meant to be 
 ## The Client
 This is the individual unit of the UltraSockets system. It is a computer which is connected to the communications network.
 
-### client = Client(host,port,name)
-Host will be the IP of the host/server. "192.168.x.xxx" for example.
-
-Port is the port on which communications will take place. It will be a number like 8000.
+### client = Client(hostname,name)
+Hostname will be the IP of the host/server and the port. "192.168.x.xxx:8000" for example, where 8000 is the port.
 
 Name is the name given to the client. This is just a string like "PC2" which is used to refer to the client when messages are sent.
 
@@ -49,10 +47,10 @@ This will permanently close the message recieving thread. It lets the client cle
 ## The Server
 The Server object is the host computer. However, it is not really a "host" anymore due to the message routing that takes place under UltraSockets. While it is a server at a technical level, the user will not be able to tell the difference between it, and any other client.
 
-### server = Server(host,port,connections,name)
+### server = Server(hostname,connections,name)
 This will create the server object.
 
-Host will be the IP of the host. In this case the server is the host, so your own IP address will be entered as a string: "192.168.x.xxx" for example.
+Hostname will be the IP of the host and the port. In this case the server is the host, so your own IP address will be entered as a string."192.168.x.xxx:8000" for example, where 8000 is the port.
 
 Port is the port on which communications will take place. It will be a number like 8000.
 
