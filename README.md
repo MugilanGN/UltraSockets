@@ -7,9 +7,7 @@ Quasi-Application layer protocol to provide fast and light communication between
 
 ####   2. Supports efficient multiple client-client communication
 
-####   3. Adds Asynchronous Transmission to preserve data integrity
-
-####   4. Has a user-friendly handshake layer which can be modified to provide encryption and compression
+####   3. Has a user-friendly handshake layer which can be modified to provide encryption and compression
 
 # Documentation
 
