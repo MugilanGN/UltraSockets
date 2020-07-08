@@ -74,7 +74,7 @@ class Server(ProtoSockets, GenericSockets):
             self.collector_threads.append(t)
 
         for key, value in self.users.items():
-            self.protosend(self.name, conn)
+            self.protosend(self.name, value[0])
 
     def idle_collector(self,conn,name):
         while True:
