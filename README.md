@@ -96,3 +96,8 @@ server.get(num)
 
 - Num can also be "all" which will return a list of all the messages that have been recieved
 
+## Support
+
+If you are having issues, please let me know. You can contact me at mugi.ganesan@gmail.com
+
+
