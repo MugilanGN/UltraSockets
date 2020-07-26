@@ -29,40 +29,40 @@ This is the individual unit of the UltraSockets system. It is a computer which i
 ```python 
 client = Client(hostname,name)
 ```
-Hostname will be the IP of the host/server and the port. "192.168.x.xxx:8000" for example, where 8000 is the port.
+- Hostname will be the IP of the host/server and the port. "192.168.x.xxx:8000" for example, where 8000 is the port.
 
-Name is the name given to the client. This is just a string like "PC2" which is used to refer to the client when messages are sent.
+- Name is the name given to the client. This is just a string like "PC2" which is used to refer to the client when messages are sent.
 
 ```python
 client.get(num)
 ```
-Num can be the number of messages that you want to retrieve from the Queue which contains all the messages recieved so far. If no messages are present, it returns None. It operates as First In, Last Out. It will return a list like so:
+- Num can be the number of messages that you want to retrieve from the Queue which contains all the messages recieved so far. If no messages are present, it returns None. It operates as First In, Last Out. It will return a list like so:
 
 [ [ name_of_recipient , message , message_serial_number ] , [...] , ... ]
 
-Num can also be "all" which will return a list of all the messages that have been recieved
+- Num can also be "all" which will return a list of all the messages that have been recieved
 
 ```python 
 client.send(name, message)
 ```
-The name is the name of the recipient who the messsage is going to be sent to,
+- The name is the name of the recipient who the messsage is going to be sent to,
 
-Message is the message itself which is going to be transmitted. It can be any data type
+- Message is the message itself which is going to be transmitted. It can be any data type
 
 ```python
 client.close()
 ```
-It will temporarily close the thread which is used for recieving messages. This means the client can no longer recieve messages. One use case is when an intensive task is being performed, so the client wants to only have the main thread running to maximize efficiency
+- It will temporarily close the thread which is used for recieving messages. This means the client can no longer recieve messages. One use case is when an intensive task is being performed, so the client wants to only have the main thread running to maximize efficiency
 
 ```python
 client.open()
 ```
-It will reopen the message collecting thread that has been closed. Now the client can recieve messages again.
+- It will reopen the message collecting thread that has been closed. Now the client can recieve messages again.
 
 ```python
 client.terminate()
 ```
-This will permanently close the message recieving thread. It lets the client cleanly exit out of the network after they are done.
+- This will permanently close the message recieving thread. It lets the client cleanly exit out of the network after they are done.
 
 ### The Server
 The Server object is the host computer. However, it is not really a "host" anymore due to the message routing that takes place under UltraSockets. While it is a server at a technical level, the user will not be able to tell the difference between it, and any other client.
@@ -70,29 +70,29 @@ The Server object is the host computer. However, it is not really a "host" anymo
 ```python
 server = Server(hostname,connections,name)
 ```
-This will create the server object.
+- This will create the server object.
 
-Hostname will be the IP of the host and the port. In this case the server is the host, so your own IP address will be entered as a string."192.168.x.xxx:8000" for example, where 8000 is the port.
+- Hostname will be the IP of the host and the port. In this case the server is the host, so your own IP address will be entered as a string."192.168.x.xxx:8000" for example, where 8000 is the port.
 
-Port is the port on which communications will take place. It will be a number like 8000.
+- Port is the port on which communications will take place. It will be a number like 8000.
 
-Connections is the number of connections supported by the server. It is the number of clients that can connect to the server. This must be exactly equal to the number of clients that will join - no more or no less.
+- Connections is the number of connections supported by the server. It is the number of clients that can connect to the server. This must be exactly equal to the number of clients that will join - no more or no less.
 
-Name is the name given to the server computer. This is just a string like "PC1" which is used to refer to the server
+- Name is the name given to the server computer. This is just a string like "PC1" which is used to refer to the server
 
 ```python
 server.send(name, message)
 ```
-The name is the name of the recipient who the messsage is going to be sent to,
+- The name is the name of the recipient who the messsage is going to be sent to,
 
-Message is the message itself which is going to be transmitted. It can be any data type
+- Message is the message itself which is going to be transmitted. It can be any data type
 
 ```python
 server.get(num)
 ```
-Num can be the number of messages that you want to retrieve from the Queue which contains all the messages recieved so far. If no messages are present, it returns None. It operates as First In, Last Out. It will return a list like so:
+- Num can be the number of messages that you want to retrieve from the Queue which contains all the messages recieved so far. If no messages are present, it returns None. It operates as First In, Last Out. It will return a list like so:
 
 [ [ name_of_recipient , message , message_serial_number ] , [...] , ... ]
 
-Num can also be "all" which will return a list of all the messages that have been recieved
+- Num can also be "all" which will return a list of all the messages that have been recieved
 
