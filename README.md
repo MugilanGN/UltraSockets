@@ -18,6 +18,10 @@ Run this to install the package:
 pip install ultra-sockets
 ```
 
+You can then import the Client and Server classes in your python files as:
+```python
+ from ultra_sockets import Client, Server
+```
 
 ## Documentation
 
@@ -99,5 +103,3 @@ server.get(num)
 ## Support
 
 If you are having issues, please let me know. You can contact me at mugi.ganesan@gmail.com
-
-
