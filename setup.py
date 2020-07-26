@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="ultra_sockets",
-    version="1.0.3",
+    version="1.0.4",
     author="Mugilan Ganesan",
     author_email="mugi.ganesan@gmail.com",
     description="Protocol to provide fast and light communication between devices over (W)LAN",
